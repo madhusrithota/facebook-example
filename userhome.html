@@ -1,0 +1,48 @@
+<div id="main" ng-init="getData()">
+	<!--<nav class="{{active}}" data-ng-click="$event.preventDefault()">
+		
+		<a href="#/facebook"  class="profile" ng-click="active='profile'" >Profile</a>		
+		<a href="#/facebook">Skills</a>
+		<a href="#" class="resources" ng-click="active='resources'">Resources</a>
+	</nav>-->	
+		<div>
+			<nav>
+				<ul>
+					<a ui-sref="userhome"> Profile </a>
+					<a ui-sref="skills"> Skills </a>
+					<a ui-sref="resources"> Resources </a>
+				</ul>
+			</nav>
+			<div  ui-view>
+				<div ui-view='userhome'></div>
+				<div ui-view='skills'></div>
+				<div ui-view='resources'></div>
+			</div>
+		</div>
+		
+	<div class="container">
+		<h3>{{welcomeMsg}}</h3>
+		<div id="profilepic">
+			<img ng-src ="{{user.FbProfilePIc}}" width=100 height=100/>
+		</div>
+		<br><br>
+			<h3><i><u>User Details</u></i></h3>
+            <table class="profileInfo">
+			
+                <tr>
+					<td>User Name:</td>
+					<td>{{user.name}}</td>
+				</tr>
+				
+				<tr>
+					<td>Email Id:</td>
+					<td>{{user.email}}</td>
+				</tr>
+				
+				<tr>
+					<td>Gender:</td>
+					<td>{{user.gender}}</td>
+				</tr>
+			</table>
+	</div>
+</div>

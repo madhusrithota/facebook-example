@@ -1,0 +1,68 @@
+<div id="main">
+		<div>
+			<nav>
+				<ul>
+					<a ui-sref="userhome"> Profile </a>
+					<a ui-sref="skills"> Skills </a>
+					<a ui-sref="resources"> Resources </a>
+				</ul>
+			</nav>
+			
+		</div>
+</div>
+<form name="myForm">
+	<table class="skillsTable" border=1 name="mytable" style="margin:0 auto" >
+		<thead>
+		<tr>
+			<th>S.No</th>
+			<th>skills</th>
+			<th>Proficiency Level</th>
+			<th>Experience</th>
+			<th>Comments</th>
+			<th>Edit</th>
+			<th>Delete</th>
+		</tr>
+		</thead>
+		<tbody>
+		
+		<tr data-ng-repeat = "row in rows " ng-if="rows.length>0">
+			<td class="index">{{$index + 1}}</td>
+			<td><select name="skills" ng-model="rows[$index].skills" class="skills" ng-options="skills for skills in skillsArray" >
+			        <option value="">Select Skill</option></select>
+					        
+			</td>
+			<td><select name="proficiency" ng-model="rows[$index].proficiency" class="proficiency" ng-options="proficiency for proficiency in proficiencyArray" >
+			        <option value="">Select</option></select>
+			</td>
+			<td class="experience"><select name="years" ng-model="rows[$index].years" ng-options="years for years in yearsArray" >
+			        <option value="">Years</option></select>
+				<select name="months" ng-model="rows[$index].months" ng-options="months for months in monthsArray" >
+			        <option value="">Months</option></select>
+			</td>
+			<td><textarea name="comments" ng-model="rows[$index].comments"></textarea></td>
+			<td><button data-ng-show="true" name="edit" data-ng-click="editSkill(rows)">Edit</button></td>
+			<td><button  data-ng-show="true" name="delete" data-ng-click="deleteSkill(rows);removeRow($index)">Delete</button></td>
+		</tr>
+		
+		<tr class ="tablerow">		
+			<td class="index"></td>
+			<td><select name="skills" ng-model="skillForm.skills" class="skills" ng-options="skills for skills in skillsArray" required>
+			        <option value="">Select Skill</option></select>
+			</td>
+			<td><select name="proficiency" ng-model="skillForm.proficiency" class="proficiency" ng-options="proficiency for proficiency in proficiencyArray" required>
+			        <option value="">Select</option></select>
+			</td>
+			<td class="experience"><select name="years" ng-model="skillForm.years" ng-options="years for years in yearsArray" required>
+			        <option value="">Years</option></select>
+				<select name="months" ng-model="skillForm.months" ng-options="months for months in monthsArray" required>
+			        <option value="">Months</option></select>
+			</td>
+			<td><textarea name="comments" ng-model="skillForm.comments"></textarea></td>
+			<td><input type="submit" data-ng-show="true" value="Add" name="add" data-ng-click="addSkill(skillForm)"/></td>
+			<td></td>
+		</tr>
+		
+		</tbody>
+	</table>
+	</form>
+
